@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jergashe <jergashe@student.42.fr>          +#+  +:+       +#+        */
+/*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 09:14:32 by jergashe          #+#    #+#             */
-/*   Updated: 2023/03/02 09:42:08 by jergashe         ###   ########.fr       */
+/*   Updated: 2023/11/10 14:48:00 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	wrong_input_check(int argc, char **argv)
 	i = 1;
 	if (argc == 6 && ft_atoi(argv[5]) <= 0)
 		return (WRONG_INPUT);
-	if (ft_atoi(argv[i]) < 1 || ft_atoi(argv[i]) > 200)
+	if (ft_atoi(argv[1]) < 1 || ft_atoi(argv[1]) > 200)
 		return (WRONG_INPUT);
 	while (++i < 5)
 	{
