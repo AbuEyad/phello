@@ -49,3 +49,20 @@ External functs.: memset, printf, malloc, free, write,
                   pthread_mutex_unlock
 Libft authorized: No
 Description     : Philosophers with threads and mutex
+
+
+
+even:
+time_to_die = time_to_eat + time_to_sleep + 10
+
+Odd:
+time_to_die = time_to_eat * 2 + time_to_sleep + 10
+
+1) odd sleep(time_to_eat / 2)
+2) odd start taking from right fork, even start taking from left fork
+3) all philosophers take from right for, except for the last one.
+
+for synchronization
+1) odd sleep(time_to_eat / 2)
+2) odd start taking from right fork, even start taking from left fork
+3) all philosophers take from right fork, except for the last one.
