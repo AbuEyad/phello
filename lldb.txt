@@ -1,0 +1,23 @@
+gcc file.c -g -o file
+
+lldb file
+run
+b main // or the funciton
+gui
+
+
+
+------------
+help minu
+------------
+
+tab - Select next view
+h - show help
+, - Page up
+. - Page down
+up - Select previous
+down - Select next
+left - unexpand or select parent 
+right - Expand
+page-up - page up
+page-down -  page down
