@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:19:00 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/17 18:07:01 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	join_threads(t_data *data)
 {
 	int	i;
 	int	nb_philos;
-
+		
 	nb_philos = get_nb_philos(data);
 	i = -1;
 	if (pthread_join(data->monit_all_alive, NULL))
