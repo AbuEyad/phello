@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/06 09:36:39 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/17 18:43:32 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/18 20:58:13 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ u_int64_t	get_time(void)
 // 	int i = 0;
 // 	while(i < 3)
 // 	{
-			
 // 		printf("get_time = %llu\n", get_time());
 // 		usleep(3000);
 // 		i++;
