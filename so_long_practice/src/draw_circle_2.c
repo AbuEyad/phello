@@ -1,4 +1,4 @@
-#include "main.h"
+#include "../include/so_long.h"
 
 void draw_circle_2(t_vars *vars, t_circle *circle)
 {

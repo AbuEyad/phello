@@ -6,14 +6,14 @@
 #    By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 08:22:06 by habu-zua          #+#    #+#              #
-#    Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr        #
+#    Updated: 2023/11/18 17:18:54 by habu-zua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 
 SRC_DIR = src/
 OBJ_DIR = objects/
@@ -34,7 +34,6 @@ SRC =	philo \
     	setters
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))
-
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC)))
 
 all: $(NAME)
@@ -54,4 +53,5 @@ fclean: clean
 
 re: fclean all
 #-g #-fsanitize=thread
+# $(SRC_DIR)%.c 
 .PHONY: all clean fclean re
