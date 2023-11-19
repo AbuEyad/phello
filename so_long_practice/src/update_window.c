@@ -36,6 +36,14 @@ int update_window2(t_vars *vars)
 	t_point p1 = {rand_num(WIDTH), rand_num(HEIGHT)};
 	t_point p2 = {rand_num(WIDTH), rand_num(HEIGHT)};
 	t_point p3 = {rand_num(WIDTH), rand_num(HEIGHT)};
+	while(abs(p2.x - p1.x) >= 50)
+		p2.x = (rand_num(WIDTH));
+	while(abs(p2.y - p1.y) >= 50)
+		p2.y = (rand_num(HEIGHT));
+	while(abs(p3.x - p1.x) >= 50)
+		p3.x = (rand_num(WIDTH));
+	while(abs(p3.y - p1.y) >= 50)
+		p3.y = (rand_num(HEIGHT));
 
 	usleep(50000);
 	counter++;
