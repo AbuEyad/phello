@@ -1,6 +1,6 @@
 gcc file.c -g -o file
 
-lldb file
+lldb file(executable)
 run
 b main // or the funciton
 gui
