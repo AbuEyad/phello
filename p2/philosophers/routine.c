@@ -6,25 +6,22 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:55:07 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/19 13:55:08 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/26 18:57:51 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/*
-	represent the behavior of a philosopher thread. check if philo_id
-	is even or odd. if it is they wait. This is to ensure that the philosophers
-	with even IDs don't start eating simultaneously, avoiding a potential
-							deadlock scenario.
-*/
 void	*philo_routine(void *arg)
 {
-	t_data_philo	*philo;
+	t_philo	*philo;
 
-	philo = (t_data_philo *)arg;
+	philo = (t_philo *)arg;
 	if (philo -> philo_id % 2 == 0)
+	{
+		print_info(philo, THINK);
 		new_sleep(philo -> time_to_eat * 0.9);
+	}
 	while (alive_check(philo))
 	{
 		if (meal(philo) == -1)
@@ -38,11 +35,7 @@ void	*philo_routine(void *arg)
 	return (NULL);
 }
 
-/*
-	responsible for updating the meal status of the philosopher
-						after each meal
-*/
-void	update_meal_status(t_data_philo *philo)
+void	update_meal_status(t_philo *philo)
 {
 	pthread_mutex_lock(philo -> priv_lock);
 	philo -> last_meal_time = get_time_now();
@@ -58,12 +51,7 @@ void	update_meal_status(t_data_philo *philo)
 	}
 }
 
-/*
-	ensure that philosophers take forks only when they are available,
-	update their meal status, and handle cases where philosophers may
-						have only one fork.
-*/
-int	meal(t_data_philo	*philo)
+int	meal(t_philo	*philo)
 {
 	if (!alive_check(philo))
 		return (-1);
@@ -93,7 +81,7 @@ int	meal(t_data_philo	*philo)
 /*
 	check if the philosophers are alive
 */
-int	alive_check(t_data_philo *philo)
+int	alive_check(t_philo *philo)
 {
 	pthread_mutex_lock(philo -> main_lock);
 	if (!philo -> stop)

@@ -8,8 +8,8 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define WIDTH 1000
-#define HEIGHT 800
+#define WIDTH 2000
+#define HEIGHT 2000
 
 typedef struct s_point 
 {

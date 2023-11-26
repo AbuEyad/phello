@@ -6,15 +6,12 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:55:12 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/19 13:55:14 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/26 18:51:16 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/*
-	retrieve the current time in milliseconds
-*/
 long int	get_time_now(void)
 {
 	struct timeval	time;
@@ -23,9 +20,6 @@ long int	get_time_now(void)
 	return ((time.tv_sec * 1000) + (time.tv_usec / 1000));
 }
 
-/*
-	pause the execution for a specified duration in milliseconds
-*/
 void	new_sleep(int mil_sec)
 {
 	long int	start_time;
@@ -35,11 +29,7 @@ void	new_sleep(int mil_sec)
 		usleep(100);
 }
 
-/*
-	responsible for waiting for all the threads in the table to
-					complete their execution
-*/
-int	wait_threads(t_table *table)
+int	join_threads(t_table *table)
 {
 	int	i;
 

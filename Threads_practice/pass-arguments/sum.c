@@ -31,6 +31,7 @@ int main(int arg, char *argv[]){
             perror("Failed to create thread \n");
         }
     }
+
     int globalSum = 0;
     for (i = 0; i < 2; i++) {
         int *r;

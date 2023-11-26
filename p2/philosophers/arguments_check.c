@@ -6,17 +6,12 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:53:48 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/19 13:53:50 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:37:17 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/* 
-	parse and validate the command-line arguments and set the corresponding
-	values in the t_table structure.  If any errors occur, appropriate error
-							messages are displayed.  
-*/
 int	set_check_args(t_table *table, int argc, char **argv)
 {
 	int	i;
@@ -43,7 +38,7 @@ int	set_check_args(t_table *table, int argc, char **argv)
 		in the t_table structure, including an optional eat_x_times field.
 */
 void	set_arguments(t_table *table, int argc, char **argv)
-{	
+{
 	table -> philos_num = atoi_philo(argv[1]);
 	table -> time_to_die = atoi_philo(argv[2]);
 	table -> time_to_eat = atoi_philo(argv[3]);

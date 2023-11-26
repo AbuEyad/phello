@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:53:56 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/19 13:53:57 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:56:41 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 	print a message indicating that all meals have been completed and set
 	the stop flag of each philosopher to 1, indicating that they should stop.
 */
-int	meal_control(t_table *table, t_data_philo *philo)
+int	meal_control(t_table *table, t_philo *philo)
 {
 	int	i;
 
@@ -42,7 +42,7 @@ int	meal_control(t_table *table, t_data_philo *philo)
 	After checking the time to die, call meal_control to check if all
 						meals have been completed
 */
-void	control(t_table *table, t_data_philo *philo)
+void	control(t_table *table, t_philo *philo)
 {
 	int				i;
 

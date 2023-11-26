@@ -6,7 +6,7 @@
 #    By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/19 13:54:21 by habu-zua          #+#    #+#              #
-#    Updated: 2023/11/19 13:54:23 by habu-zua         ###   ########.fr        #
+#    Updated: 2023/11/26 16:00:14 by habu-zua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ RESET		=	\033[0m
 
 all:		$(NAME)
 
-$(NAME):	$(OBJS)
+$(NAME):	$(OBJS) 
 			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 			echo "$(GREEN)✅🚀 Program compiled successfully 🚀✅$(RESET)"
 

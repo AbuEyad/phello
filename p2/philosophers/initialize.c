@@ -6,20 +6,15 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:54:13 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/19 13:54:15 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:54:08 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-/*
-	initialize all the necessary components for the dining philosophers
-	problem simulation. allocate memory for the philos array and threads
-		array based on the number of philosophers in the table
-*/
 int	init_all(t_table *table)
 {
-	table -> philos = malloc(sizeof(t_data_philo) * table -> philos_num);
+	table -> philos = malloc(sizeof(t_philo) * table -> philos_num);
 	if (!table -> philos)
 		return (free_all(table), -1);
 	table -> threads = malloc(sizeof(pthread_t) * table -> philos_num);
@@ -33,14 +28,7 @@ int	init_all(t_table *table)
 	return (0);
 }
 
-/*
-	initialize each philosopher in the philos array. set the philosopher
-	ID, start time, left and right forks (if applicable), the number of times
-	to eat, last meal time, stop flag, and various timing parameters. also
-	set the pointers to shared resources such as the already_ate_max counter,
-			main lock, private lock, and write message mutex.
-*/
-void	init_philo(t_table *table, t_data_philo *philo)
+void	init_philo(t_table *table, t_philo *philo)
 {
 	int	i;
 
@@ -69,13 +57,6 @@ void	init_philo(t_table *table, t_data_philo *philo)
 	}
 }
 
-/*
-	initialize the mutexes for forks, private locks, and other
-	shared resources. allocate memory for the forks array and
-	priv_lock array based on the number of philosophers in the table.
-	then iterate over each philosopher and initialize the
-		corresponding mutexes using pthread_mutex_init.
-*/
 int	init_mutex(t_table *table)
 {
 	int		i;
@@ -97,13 +78,6 @@ int	init_mutex(t_table *table)
 	return (0);
 }
 
-/*
-	create threads for each philosopher and start their execution.
-	set the start time of the simulation and then create a thread for
-	each philosopher using pthread_create, passing the address of the
-	philo_routine function and the corresponding philos array element
-							as arguments.
-*/
 int	init_threads(t_table *table)
 {
 	int	i;
@@ -112,6 +86,6 @@ int	init_threads(t_table *table)
 	table -> start_time = get_time_now();
 	while (++i < table -> philos_num)
 		pthread_create(&table -> threads[i], NULL,
-			&philo_routine, &table -> philos[i]);
+			&philo_routine, &table->philos[i]);
 	return (1);
 }

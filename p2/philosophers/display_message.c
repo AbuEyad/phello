@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:54:08 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/19 14:12:28 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/26 15:56:24 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	error_message_args(t_table *table)
 	printing the action performed by a philosopher along with the
 		corresponding timestamp and the id of the philosopher
 */
-void	print_info(t_data_philo *philo, char *action)
+void	print_info(t_philo *philo, char *action)
 {
 	long int	time;
 

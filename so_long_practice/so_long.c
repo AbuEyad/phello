@@ -72,7 +72,15 @@ int controls_working_3(int command, t_vars *vars)
 		i += 10;
 	if(command == 49)
 		mlx_clear_window(vars->mlx, vars->win);
-	t_circle circle = {i, j, 20};
+
+	int static r = 10;
+
+	if (command == 69)
+		r++;
+	else if(command == 78)
+		r--;
+	
+	t_circle circle = {i, j, r};
 	if(draw_flag == 0)
 		draw_filled_circle(vars, &circle);
 	if (command == 53)

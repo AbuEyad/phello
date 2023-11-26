@@ -1,8 +1,8 @@
 gcc file.c -g -o file
 
 lldb file
-run
 b main // or the funciton
+run
 gui
 
 
