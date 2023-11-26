@@ -99,9 +99,9 @@ int main(int argc, char **argv)
 	vars.win = mlx_new_window(vars.mlx, WIDTH, HEIGHT, "Random Shape");
 	images_assignment(&vars);
 	// place_player(&vars, 0, 0);
-	// mlx_loop_hook(vars.mlx, update_window2, &vars);
+	mlx_loop_hook(vars.mlx, update_window2, &vars);
 	// mlx_hook(vars.win, 2, 1L << 0, controls_working_2, &vars);
-	mlx_hook(vars.win, 2, 1L << 0, controls_working_3, &vars);
+	// mlx_hook(vars.win, 2, 1L << 0, controls_working_3, &vars);
 	mlx_hook(vars.win, 17, 0, exit_point, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
