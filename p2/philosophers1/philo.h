@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:54:35 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/26 19:59:15 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/26 20:10:51 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
  0\033[0m")
 
 /* structures */
-typedef struct s_data_philo
+typedef struct s_philo
 {
 	int				philo_id;
 	int				time_to_eat;
@@ -63,7 +63,7 @@ typedef struct s_data_philo
 	pthread_mutex_t	*main_lock;
 	pthread_mutex_t	*priv_lock;
 	pthread_mutex_t	*write_message;
-}				t_data_philo;
+}				t_philo;
 
 typedef struct s_table
 {
@@ -74,7 +74,7 @@ typedef struct s_table
 	int				eat_x_times;
 	int				already_ate_max;
 	pthread_t		*threads;
-	t_data_philo	*philos;
+	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	write_message;
 	long int		start_time;
@@ -87,8 +87,8 @@ int				set_check_args(t_table *table, int argc, char **argv);
 void			set_arguments(t_table *table, int argc, char **argv);
 
 /* control */
-int				meal_control(t_table *table, t_data_philo *philo);
-void			control(t_table *table, t_data_philo *philo);
+int				meal_control(t_table *table, t_philo *philo);
+void			control(t_table *table, t_philo *philo);
 
 /* destroy mutexes and free */
 void			destroy(t_table *table);
@@ -97,24 +97,24 @@ void			free_all(t_table *table);
 /* display message */
 int				error_message(char *message, int print_usage);
 int				error_message_args(t_table *table);
-void			print_info(t_data_philo *philo, char *action);
+void			print_info(t_philo *philo, char *action);
 
 /* initialize */
 int				init_all(t_table *table);
-void			init_philo(t_table *table, t_data_philo *philo);
+void			init_philo(t_table *table, t_philo *philo);
 int				init_mutex(t_table *table);
 int				init_threads(t_table *table);
 
 /* routine */
 void			*philo_routine(void *arg);
-void			update_meal_status(t_data_philo *philo);
-int				meal(t_data_philo	*philo);
-int				alive_check(t_data_philo *philo);
+void			update_meal_status(t_philo *philo);
+int				meal(t_philo	*philo);
+int				alive_check(t_philo *philo);
 
 /* time */
 long int		get_time_now(void);
 void			new_sleep(int mil_sec);
-int				wait_threads(t_table *table);
+int				join_threads(t_table *table);
 
 /* utils */
 void			put_char(char c, int fd);
@@ -122,3 +122,4 @@ void			put_string(char *s, int fd);
 int				digit_check(char *c);
 int				is_int(char *str);
 int				atoi_philo(char *str);
+#endif
