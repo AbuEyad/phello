@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:53:56 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/26 20:19:30 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/27 22:16:26 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ int	meal_control(t_table *table, t_philo *philo)
 	int	i;
 
 	i = -1;
-	pthread_mutex_lock(&table -> main_lock);
+	// pthread_mutex_lock(&table -> main_lock);
 	if (table -> already_ate_max == table -> philos_num)
 	{
 		printf("%s\n", FINISH_MEAL);
 		while (++i < table -> philos_num)
 			philo[i].stop = 1;
-		pthread_mutex_unlock(&table -> main_lock);
+		// pthread_mutex_unlock(&table -> main_lock);
 		return (-1);
 	}
-	pthread_mutex_unlock(&table -> main_lock);
+	// pthread_mutex_unlock(&table -> main_lock);
 	return (0);
 }
 

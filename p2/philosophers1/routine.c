@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:55:07 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/26 18:57:51 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/27 23:29:36 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void	*philo_routine(void *arg)
 
 void	update_meal_status(t_philo *philo)
 {
-	pthread_mutex_lock(philo -> priv_lock);
+	// pthread_mutex_lock(philo -> priv_lock);
 	philo -> last_meal_time = get_time_now();
-	pthread_mutex_unlock(philo -> priv_lock);
+	// pthread_mutex_unlock(philo -> priv_lock);
 	if (philo -> eat_x_times != 0)
 	{
 		if (++philo -> ate_x_times == philo -> eat_x_times)
 		{
-			pthread_mutex_lock(philo -> main_lock);
+			// pthread_mutex_lock(philo -> main_lock);
 			*philo -> already_ate_max += 1;
-			pthread_mutex_unlock(philo -> main_lock);
+			// pthread_mutex_unlock(philo -> main_lock);
 		}
 	}
 }
@@ -68,11 +68,11 @@ int	meal(t_philo	*philo)
 	if (!alive_check(philo))
 		return (pthread_mutex_unlock(philo -> left_fork),
 			pthread_mutex_unlock(philo -> right_fork), -1);
-	update_meal_status(philo);
-	if (!alive_check(philo))
-		return (pthread_mutex_unlock(philo -> left_fork),
-			pthread_mutex_unlock(philo -> right_fork), -1);
+	// if (!alive_check(philo))
+	// 	return (pthread_mutex_unlock(philo -> left_fork),
+	// 		pthread_mutex_unlock(philo -> right_fork), -1);
 	new_sleep(philo -> time_to_eat);
+	update_meal_status(philo);// update after eat not before!!;
 	pthread_mutex_unlock(philo -> right_fork);
 	pthread_mutex_unlock(philo -> left_fork);
 	return (0);
