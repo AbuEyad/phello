@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 13:55:07 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/27 23:29:36 by habu-zua         ###   ########.fr       */
+/*   Updated: 2023/11/29 20:24:54 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ int	meal(t_philo	*philo)
 */
 int	alive_check(t_philo *philo)
 {
-	pthread_mutex_lock(philo -> main_lock);
+	// pthread_mutex_lock(philo -> main_lock);
 	if (!philo -> stop)
 	{
-		pthread_mutex_unlock(philo -> main_lock);
+		// pthread_mutex_unlock(philo -> main_lock);
 		return (1);
 	}
-	pthread_mutex_unlock(philo -> main_lock);
+	// pthread_mutex_unlock(philo -> main_lock);
 	return (0);
 }
