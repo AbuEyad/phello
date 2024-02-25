@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/04 09:14:32 by jergashe          #+#    #+#             */
-/*   Updated: 2023/11/10 14:48:00 by habu-zua         ###   ########.fr       */
+/*   Created: 2024/02/25 15:24:13 by habu-zua          #+#    #+#             */
+/*   Updated: 2024/02/25 20:57:28 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,84 +14,40 @@
 
 void	print_instruction(void)
 {
-	printf("\t\tWRONG INPUT!\n\n");
-	printf("./philo nb_philos time_to_die ");
-	printf("time_to_eat time_to_sleep ");
-	printf("number_of_times_each_philosopher_must_eat ");
+	printf("WRONG INPUT!\n");
+	printf("Usage: ./philo <nb_philos> <time_to_die> ");
+	printf("<time_to_eat> <time_to_sleep> ");
+	printf("<number_of_meals> ");
 	printf("(optional argument)\n");
-	printf("Example:\n\n");
-	printf("./philo 4 800 200 200 5\n\n");
-	printf("nb_philos: 1-200\n");
-	printf("time_to_die: 60+\n");
-	printf("time_to_eat: 60+\n");
-	printf("time_to_sleep: 60+\n");
-	printf("number_of_times_each_philosopher_must_eat: ");
-	printf("0+\n");
 }
 
-int	wrong_input_check(int argc, char **argv)
+int	is_space(char c)
 {
-	int	i;
-
-	i = 1;
-	if (argc == 6 && ft_atoi(argv[5]) <= 0)
-		return (WRONG_INPUT);
-	if (ft_atoi(argv[1]) < 1 || ft_atoi(argv[1]) > 200)
-		return (WRONG_INPUT);
-	while (++i < 5)
-	{
-		if (ft_atoi(argv[i]) < 60)
-			return (WRONG_INPUT);
-	}
-	return (0);
+	return (c == ' ' || (c >= 9 && c <= 13));
 }
 
 int	ft_atoi(char *str)
 {
-	int		count;
+	int		i;
 	long	result;
-	int		sign;
 
-	count = 0;
+	i = 0;
 	result = 0;
-	sign = 1;
-	while (str[count] == '\r' || str[count] == '\t' || str[count] == ' '
-		|| str[count] == '\f' || str[count] == '\v' || str[count] == '\n')
-		count++;
-	if (str[count] == '-')
-	{
-		sign = -1;
-		count++;
-	}
-	else if (str[count] == '+')
-		count++;
-	if (!(str[count] >= '0' && str[count] <= '9'))
-		return (0);
-	while (str[count] >= '0' && str[count] <= '9')
-		result = result * 10 + (str[count++] - '0');
-	return (result * sign);
-}
-
-int	is_input_digit(int argc, char **argv)
-{
-	int	i;
-	int	k;
-
-	i = 1;
-	while (i < argc)
-	{
-		k = 0;
-		while (argv[i][k] != '\0')
-		{
-			if (argv[i][k] < '0' || argv[i][k] > '9')
-			{
-				return (WRONG_INPUT);
-			}
-			k++;
-		}
+	while (is_space (str[i]))
 		i++;
-	}
-	return (0);
+	if (str[i] == '-')
+		return (0);
+	else if (str[i] == '+')
+		i++;
+	if (!(str[i] >= '0' && str[i] <= '9'))
+		return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+		result = result * 10 + (str[i++] - '0');
+	while (is_space(str[i]))
+		i++;
+	if (str[i] != '\0')
+		return (0);
+	return (result);
 }
 
 int	check_input(int argc, char **argv)
@@ -100,9 +56,13 @@ int	check_input(int argc, char **argv)
 		return (WRONG_INPUT);
 	if (argc > 6)
 		return (WRONG_INPUT);
-	if (is_input_digit(argc, argv) != 0)
+	if (argc == 6 && ft_atoi(argv[5]) <= 0)
 		return (WRONG_INPUT);
-	if (wrong_input_check(argc, argv))
-		return (WRONG_INPUT);
+	while(argc > 1)
+	{
+		if (ft_atoi(argv[argc - 1]) <= 0)
+			return (WRONG_INPUT);
+		argc--;
+	}
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:51:45 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/02/25 19:34:47 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	drop_forks(t_philo *philo)
 {
-	pthread_mutex_unlock(philo->left_f);
 	pthread_mutex_unlock(philo->right_f);
+	pthread_mutex_unlock(philo->left_f);
 }
 
 void	update_last_meal_time(t_philo *philo)
@@ -49,10 +49,3 @@ int	eat(t_philo *philo)
 	drop_forks(philo);
 	return (0);
 }
-
-// void	print_nb_full_p(t_data *data)
-// {
-// 	pthread_mutex_lock(&data->mut_print);
-// 	printf("%d FULL(%d) PHILOS\n", data->nb_full_p, data->nb_meals);
-// 	pthread_mutex_unlock(&data->mut_print);
-// }

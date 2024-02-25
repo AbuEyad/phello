@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 10:04:10 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Created: 2024/02/25 15:27:25 by habu-zua          #+#    #+#             */
+/*   Updated: 2024/02/25 16:42:47 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,14 @@ void	free_data(t_data *data)
 	pthread_mutex_destroy(&data->mut_print);
 	pthread_mutex_destroy(&data->mut_keep_iter);
 	pthread_mutex_destroy(&data->mut_start_time);
-	free(data->philo_ths);
+	free(data->ph_threads);
 	free(data->philos);
 	free(data->forks);
 }
 
 void	print_msg(t_data *data, int id, char *msg)
 {
-	uint64_t	time;
+	unsigned long long int	time;
 
 	time = get_time() - get_start_time(data);
 	pthread_mutex_lock(&data->mut_print);

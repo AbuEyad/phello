@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/11 14:47:58 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Created: 2024/02/25 15:25:36 by habu-zua          #+#    #+#             */
+/*   Updated: 2024/02/25 19:05:50 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ bool	philo_died(t_philo *philo)
 
 	data = philo->data;
 	result = false;
-	if (get_time() - get_last_eat_time(philo) > get_die_time(data)
+	if ((get_time() - get_last_eat_time(philo)) > get_die_time(data)
 		&& get_philo_state(philo) != EATING)
 	{
 		set_philo_state(philo, DEAD);
@@ -73,9 +73,7 @@ void	*all_full_routine(void *data_p)
 	}
 	return (NULL);
 }
-// usleep(200);
 
-//  || (get_philo_state(&philos[i]) == DEAD
 void	*all_alive_routine(void *data_p)
 {
 	int		i;
@@ -98,7 +96,7 @@ void	*all_alive_routine(void *data_p)
 		}
 		if (i == nb_philos - 1)
 			i = -1;
-		usleep(1000);
+		usleep(200);
 	}
 	return (NULL);
 }

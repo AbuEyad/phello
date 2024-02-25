@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/17 08:48:59 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Created: 2024/02/25 15:25:09 by habu-zua          #+#    #+#             */
+/*   Updated: 2024/02/25 20:58:44 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,26 @@ int	take_forks(t_philo *philo)
 {
 	if (get_nb_philos(philo->data) == 1)
 		return (handle_1_philo(philo));
-	if (take_right_fork(philo) != 0)
-		return (1);
-	if (take_left_fork(philo) != 0)
-	{
-		drop_right_fork(philo);
-		return (1);
-	}
+	// if(philo->id %2)
+	// {
+		if (take_left_fork(philo) != 0)
+			return (1);
+		if (take_right_fork(philo) != 0)
+		{
+			drop_left_fork(philo);
+			return (1);
+		}
+	// }
+	// else
+	// {
+	// 	if (take_right_fork(philo) != 0)
+	// 		return (1);
+	// 	if (take_left_fork(philo) != 0)
+	// 	{
+	// 		drop_right_fork(philo);
+	// 		return (1);
+	// 	}
+	
+	// }
 	return (0);
 }

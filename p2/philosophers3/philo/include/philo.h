@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 08:21:01 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/02/25 16:46:51 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@
 
 typedef enum e_philo_state
 {
-	EATING = 0,
-	SLEEPING = 1,
-	THINKING = 2,
-	DEAD = 3,
-	FULL = 4,
-	IDLE = 5
+	EATING		= 0,
+	SLEEPING	= 1,
+	THINKING	= 2,
+	DEAD		= 3,
+	FULL		= 4,
+	IDLE		= 5
 }	t_state;
 
 struct	s_data;
@@ -76,7 +76,7 @@ typedef struct s_data
 	pthread_mutex_t	mut_start_time;
 	pthread_t		monit_all_alive;
 	pthread_t		monit_all_full;
-	pthread_t		*philo_ths;
+	pthread_t		*ph_threads;
 	pthread_mutex_t	*forks;
 	t_philo			*philos;
 }t_data;
@@ -92,9 +92,10 @@ int			ft_atoi(char *str);
 void		print_instruction(void);
 
 // init_data.c
-int			init_data(t_data *data, int argc, char **argv);
+void		init_data(t_data *data, int argc, char **argv);
 int			init_philos(t_data *data);
 int			init_forks(t_data *data);
+int			malloc_data(t_data *data);
 
 // time.c
 u_int64_t	get_time(void);

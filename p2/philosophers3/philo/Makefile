@@ -6,14 +6,14 @@
 #    By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 08:22:06 by habu-zua          #+#    #+#              #
-#    Updated: 2023/11/18 17:18:54 by habu-zua         ###   ########.fr        #
+#    Updated: 2024/02/25 14:00:35 by habu-zua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CC = cc
 RM = rm -rf
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -pthread
 
 SRC_DIR = src/
 OBJ_DIR = objects/

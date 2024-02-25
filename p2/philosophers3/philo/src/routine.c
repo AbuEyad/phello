@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/07 10:21:40 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/19 12:43:18 by habu-zua         ###   ########.fr       */
+/*   Created: 2024/02/25 15:26:42 by habu-zua          #+#    #+#             */
+/*   Updated: 2024/02/25 20:01:00 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,30 +24,15 @@ void	*routine(void *philo_p)
 	while (get_philo_state(philo) != DEAD)
 	{
 		if (eat(philo) != 0)
-		{
-			printf("phelo id = %d eat break\n", philo->id);
 			break ;
-		}
 		if (get_philo_state(philo) == DEAD)
-		{
-			printf("phelo id = %d eat break\n", philo->id);
 			break ;
-		}
 		if (ft_sleep(philo) != 0)
-		{
-			printf("phelo id = %d eat break\n", philo->id);
 			break ;
-		}
 		if (get_philo_state(philo) == DEAD)
-		{
-			printf("phelo id = %d eat break\n", philo->id);
 			break ;
-		}
 		if (think(philo) != 0)
-		{
-			printf("phelo id = %d eat break\n", philo->id);
 			break ;
-		}
 	}
 	return (NULL);
 }
