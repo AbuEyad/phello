@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:25:36 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/03/02 12:12:56 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 21:28:45 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ bool	philo_died(t_philo *philo)
 	data = philo->data;
 	result = false;
 	if ((get_time() - get_last_eat_time(philo)) > data->die_time
-		&& get_philo_state(philo) != EATING)
+		/* && get_philo_state(philo) != EATING */)
 	{
-		set_keep_iterating(data, false);
-		update_philo_state(philo, DEAD);
+		// set_keep_iterating(data, false);
+		// update_philo_state(philo, DEAD);
+		print_msg(data, philo->id, DIED);
 		result = true;
 	}
 	return (result);
@@ -85,7 +86,7 @@ void	*life_check(void *data_p)
 	{
 		if (philo_died(&philos[i]) /* && keep_iter(data) */)
 		{
-			print_msg(data, philos[i].id, DIED);
+			// print_msg(data, philos[i].id, DIED);
 			set_keep_iterating(data, false);
 			// notify_all_philos(data);
 			break ;

@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:27:25 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/03/02 11:57:15 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 19:07:13 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ int	one_philo(t_philo *philo)
 {
 	take_left_fork(philo);
 	ft_usleep(philo->data->die_time);
-	update_philo_state(philo, DEAD);
+	// update_philo_state(philo, DEAD);
+	print_msg(philo->data, philo->id, DIED);
 	drop_left_fork(philo);
 	return (1);
 }
