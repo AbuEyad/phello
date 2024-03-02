@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:24:13 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 20:57:28 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:14:06 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	check_input(int argc, char **argv)
 		return (WRONG_INPUT);
 	if (argc == 6 && ft_atoi(argv[5]) <= 0)
 		return (WRONG_INPUT);
-	while(argc > 1)
+	while (argc > 1)
 	{
 		if (ft_atoi(argv[argc - 1]) <= 0)
 			return (WRONG_INPUT);

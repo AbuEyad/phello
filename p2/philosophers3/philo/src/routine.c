@@ -6,24 +6,22 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:26:42 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 20:01:00 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 12:17:11 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-//philo_died(philo) || 
 void	*routine(void *philo_p)
 {
 	t_philo	*philo;
 
 	philo = (t_philo *) philo_p;
-	update_last_meal_time(philo);
 	if (philo->id % 2 == 0)
-		ft_usleep(philo->data->eat_time - 10);
-	while (get_philo_state(philo) != DEAD)
+		ft_usleep(philo->data->eat_time -10);
+	while (keep_iter(philo->data))
 	{
-		if (eat(philo) != 0)
+		if (ft_eat(philo) != 0)
 			break ;
 		if (get_philo_state(philo) == DEAD)
 			break ;
@@ -31,18 +29,19 @@ void	*routine(void *philo_p)
 			break ;
 		if (get_philo_state(philo) == DEAD)
 			break ;
-		if (think(philo) != 0)
+		if (ft_think(philo) != 0)
 			break ;
+		usleep(500);
 	}
 	return (NULL);
 }
 
-void	print_nb_meals_had(t_philo *philo)
+void	nb_of_meals(t_philo *philo)
 {
 	t_data	*data;
 
 	data = philo->data;
 	pthread_mutex_lock(&data->mut_print);
-	printf("Philo %d ate %d times\n", philo->id, philo->nb_meals_had);
+	printf("Philo %d ate %d times\n", philo->id, philo->meals_count);
 	pthread_mutex_unlock(&data->mut_print);
 }

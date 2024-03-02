@@ -36,7 +36,7 @@ void    exit_on_error(data_t* data, int exit_code)
 void    *routine_1(void  *arg)
 {
     data_t *data;
-    int i;
+    int     i;
 
     data = (data_t *)arg;
     i = 0;
@@ -52,7 +52,7 @@ void    *routine_1(void  *arg)
 
 void    example()
 {
-    data_t    *data;
+    data_t      *data;
     pthread_t   t1;
     pthread_t   t2;
 
@@ -74,9 +74,9 @@ void    example()
 
 int main()
 {
-    example();
-
+    example2();
 
     return (0);
 }
+
 

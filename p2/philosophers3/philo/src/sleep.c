@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:26:55 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 15:27:00 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:45:30 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_sleep(t_philo *philo)
 {
-	set_philo_state(philo, SLEEPING);
+	update_philo_state(philo, SLEEPING);
 	if (get_philo_state(philo) == DEAD)
 		return (1);
 	print_msg(philo->data, philo->id, SLEEP);

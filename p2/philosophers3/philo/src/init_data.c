@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:25:27 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 17:29:35 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:19:00 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	init_data(t_data *data, int argc, char **argv)
 {
-	data->nb_full_p = 0;
 	data->keep_iterating = true;
 	data->nb_philos = ft_atoi(argv[1]);
 	data->die_time = (u_int64_t) ft_atoi(argv[2]);
@@ -57,10 +56,10 @@ int	init_philos(t_data *data)
 	{
 		philos[i].data = data;
 		philos[i].id = i + 1;
-		philos[i].nb_meals_had = 0;
+		philos[i].meals_count = 0;
 		philos[i].state = IDLE;
 		pthread_mutex_init(&philos[i].mut_state, NULL);
-		pthread_mutex_init(&philos[i].mut_nb_meals_had, NULL);
+		pthread_mutex_init(&philos[i].mut_meals_count, NULL);
 		pthread_mutex_init(&philos[i].mut_last_eat_time, NULL);
 		update_last_meal_time(&philos[i]);
 	}
@@ -77,8 +76,8 @@ int	init_forks(t_data *data)
 	while (++i < data->nb_philos)
 		pthread_mutex_init(&data->forks[i], NULL);
 	i = 0;
-	philos[0].left_f = &data->forks[0];
-	philos[0].right_f = &data->forks[data->nb_philos - 1];
+	philos[i].left_f = &data->forks[i];
+	philos[i].right_f = &data->forks[data->nb_philos - 1];
 	while (++i < data->nb_philos)
 	{
 		philos[i].left_f = &data->forks[i];

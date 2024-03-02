@@ -6,7 +6,7 @@
 #    By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/04 08:22:06 by habu-zua          #+#    #+#              #
-#    Updated: 2024/02/25 14:00:35 by habu-zua         ###   ########.fr        #
+#    Updated: 2024/03/01 15:42:19 by habu-zua         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,15 +22,14 @@ SRC =	philo \
     	parse \
     	init_data \
     	routine \
-    	time \
 		utils \
     	monitor \
-       	eat_1 \
-    	eat_2 \
+       	eat \
+    	forks \
     	sleep \
     	think \
-    	getters_1 \
-    	getters_2 \
+    	getters \
+    	time \
     	setters
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC)))

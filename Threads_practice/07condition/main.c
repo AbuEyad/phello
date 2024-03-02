@@ -20,16 +20,16 @@ void *fuel_filling(void *arg){
     }
 }
 
-void *car(void *arg){
+void *car(void *arg){ //car is waiting for fuel
     pthread_mutex_lock(&mutex_fuel);
     while(fuel < 40){
         printf("No fuel waiting....\n");
         // this call will unlock mutex_fuel and wait for the signal
-        pthread_cond_wait(&cond_fuel, &mutex_fuel);
+        pthread_cond_wait(&cond_fuel, &mutex_fuel);//should be inside a while loop to check the condition again after the signal.
         //Equivalent to :
         // phtread_mutex_unlock(&mutex_fuel);
         // wait for signal on cond_fuel
-        // pthread_mutex_lock(&mutex_fuel)
+        //pthread_mutex_unlock(&mutex_fuel);
     }
     fuel -= 40;
     printf("Got fuel now left: %d\n", fuel);

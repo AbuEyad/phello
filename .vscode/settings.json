@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "iomanip": "c",
+        "locale": "c"
+    }
+}

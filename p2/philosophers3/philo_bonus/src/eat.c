@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 10:21:43 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:45:30 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,13 @@ int	drop_forks(t_data *data)
 	return (0);
 }
 
-bool	nb_meals_option_given(t_data *data)
-{
-	if (data->nb_meals > 0)
-		return (true);
-	return (false);
-}
-
 bool	philo_is_full(t_data *data)
 {
-	if (nb_meals_option_given(data) == false)
+	if (!data->nb_meals)
 		return (false);
-	if (data->nb_meals <= data->philo.nb_meals_had)
+	if (data->nb_meals <= data->philo.meals_count)
 	{
-		set_philo_state(data, FULL);
+		update_philo_state(data, FULL);
 		return (true);
 	}
 	return (false);
@@ -67,7 +60,7 @@ int	eat(t_data *data)
 	if (take_forks(data))
 		return (1);
 	update_last_meal_time(data);
-	set_philo_state(data, EATING);
+	update_philo_state(data, EATING);
 	if (print_msg(data, EAT))
 	{
 		drop_forks(data);
@@ -75,7 +68,7 @@ int	eat(t_data *data)
 	}
 	sleep_for_eating(data);
 	drop_forks(data);
-	data->philo.nb_meals_had++;
+	data->philo.meals_count++;
 	if (philo_is_full(data))
 		return (1);
 	return (0);

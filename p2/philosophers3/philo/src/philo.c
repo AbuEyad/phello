@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:25:51 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 19:10:24 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:14:25 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	create_threads(t_data *data)
 			return (1);
 	}
 	if (pthread_create(&data->monit_all_alive, NULL,
-			&all_alive_routine, data) != 0)
+			&life_check, data) != 0)
 		return (1);
 	if (nb_meals_option(data) == true
 		&& pthread_create(&data->monit_all_full, NULL,
@@ -56,10 +56,15 @@ int	join_threads(t_data *data)
 	return (0);
 }
 
-int	philosophers(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	data;
 
+	if (check_input(argc, argv) != 0)
+	{
+		print_instruction();
+		return (WRONG_INPUT);
+	}
 	init_data(&data, argc, argv);
 	if (malloc_data(&data) != 0)
 		return (MALLOC_ERROR);
@@ -70,26 +75,3 @@ int	philosophers(int argc, char **argv)
 	free_data(&data);
 	return (0);
 }
-
-void	leaks(void)
-{
-	system("leaks philo");
-}
-
-int	main(int argc, char **argv)
-{
-	if (check_input(argc, argv) != 0)
-	{
-		print_instruction();
-		return (WRONG_INPUT);
-	}
-	if (philosophers(argc, argv) != 0)
-		return (MALLOC_ERROR);
-	return (0);
-}
-
-// fix printing
-// fix philo_died()
-// fix routing order MAYBE
-// WHAT SHOULD IT DO WHEN NB_MEALS IS <= 0?
-// is it possible to print in smaller periods?

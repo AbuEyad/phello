@@ -19,7 +19,6 @@ void *routine() {
 int main(int argc, char *argv[])
 {
     pthread_t th[4];
-    
     pthread_mutex_init(&mutex, NULL);
     
     for(int i = 0; i < 4; i++)

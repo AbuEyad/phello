@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:44:34 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/01 19:21:44 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	init_data(t_data *data, int argc, char **argv)
 	if (argc == 6)
 		data->nb_meals = ft_atoi(argv[5]);
 	data->philo.data = data;
-	data->philo.nb_meals_had = 0;
+	data->philo.meals_count = 0;
 	data->philo.state = IDLE;
 	return (init_semaphores(data));
 }

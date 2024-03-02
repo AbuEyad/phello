@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   eat_1.c                                            :+:      :+:    :+:   */
+/*   eat.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 11:51:45 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 19:34:47 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:33:37 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,27 +25,27 @@ void	update_last_meal_time(t_philo *philo)
 	pthread_mutex_unlock(&philo->mut_last_eat_time);
 }
 
-void	update_nb_meals_had(t_philo *philo)
+void	update_meals_count(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->mut_nb_meals_had);
-	philo->nb_meals_had++;
-	pthread_mutex_unlock(&philo->mut_nb_meals_had);
+	pthread_mutex_lock(&philo->mut_meals_count);
+	philo->meals_count++;
+	pthread_mutex_unlock(&philo->mut_meals_count);
 }
 
-void	sleep_for_eating(t_philo *philo)
+void	time_for_eating(t_philo *philo)
 {
 	ft_usleep(get_eat_time(philo->data));
 }
 
-int	eat(t_philo *philo)
+int	ft_eat(t_philo *philo)
 {
 	if (take_forks(philo) != 0)
 		return (1);
-	set_philo_state(philo, EATING);
-	print_msg(philo->data, philo->id, EAT);
 	update_last_meal_time(philo);
-	sleep_for_eating(philo);
-	update_nb_meals_had(philo);
+	update_philo_state(philo, EATING);
+	print_msg(philo->data, philo->id, EAT);
+	time_for_eating(philo);
+	update_meals_count(philo);
 	drop_forks(philo);
 	return (0);
 }

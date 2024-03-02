@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   getters_1.c                                        :+:      :+:    :+:   */
+/*   getters.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:25:17 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 15:25:19 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:45:13 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-bool	get_keep_iter(t_data *data)
+bool	keep_iter(t_data *data)
 {
 	bool	keep_iterating;
 
@@ -42,14 +42,14 @@ t_state	get_philo_state(t_philo *philo)
 	return (state);
 }
 
-int	get_nb_meals_philo_had(t_philo *philo)
+int	get_nb_meals_had(t_philo *philo)
 {
-	int	nb_meals_had;
+	int	meals_count;
 
-	pthread_mutex_lock(&philo->mut_nb_meals_had);
-	nb_meals_had = philo->nb_meals_had;
-	pthread_mutex_unlock(&philo->mut_nb_meals_had);
-	return (nb_meals_had);
+	pthread_mutex_lock(&philo->mut_meals_count);
+	meals_count = philo->meals_count;
+	pthread_mutex_unlock(&philo->mut_meals_count);
+	return (meals_count);
 }
 
 uint64_t	get_start_time(t_data *data)

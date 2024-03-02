@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/20 08:16:23 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:45:30 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ struct	s_data;
 typedef struct s_philo
 {
 	int				id;
-	int				nb_meals_had;
+	int				meals_count;
 	struct s_data	*data;
 	t_state			state;
 	u_int64_t		last_eat_time;
@@ -110,7 +110,7 @@ t_state		get_philo_state(t_data *data);
 uint64_t	get_start_time(t_data *data);
 
 // setters.c
-void		set_philo_state(t_data *data, t_state state);
+void		update_philo_state(t_data *data, t_state state);
 void		update_last_meal_time(t_data *data);
 
 // print_msg.c

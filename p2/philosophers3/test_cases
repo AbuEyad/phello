@@ -1,0 +1,9 @@
+//test cases for philosophers
+// ./philo 3 310 100 100
+// ./philo 119 60 60 60 // printing after died
+// ./philo 119 60 60 60 1 // printing after died
+// ./philo 119 92 9223372036854775807 60 not exiting after died
+
+//  ./philo 150 92 9250 60 if the time to sleep is heighr than the programe waites too long.
+
+

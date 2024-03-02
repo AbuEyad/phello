@@ -6,13 +6,13 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 09:13:13 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:45:30 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo_bonus.h"
 
-void	set_philo_state(t_data *data, t_state state)
+void	update_philo_state(t_data *data, t_state state)
 {
 	sem_wait(data->philo.sem_philo);
 	data->philo.state = state;

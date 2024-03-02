@@ -26,7 +26,7 @@ void    *routine_2(void  *arg)
 
 void    example_3()
 {
-    int *num;
+    int         *num;
     pthread_t   t1;
     pthread_t   t2;
 
@@ -59,16 +59,17 @@ void    *print_hello(void   *arg)
     return (NULL);
 }
 
-void    *print_world(void   *arg)
+void    *print_word(void   *arg)
 {
+    char *str = (char *)arg;
     int i;
 
     i = 0;
     while (i < 100)
     {
-        printf("\t\tWorld\n");
+        printf("\t\t%s\n", str);
         i++;
-        usleep(100);
+        // usleep(100);
     }
     return (NULL);
 }
@@ -77,10 +78,13 @@ void    example_2()
 {
     pthread_t   t1;
     pthread_t   t2;
+    char        *str;
 
-    if (pthread_create(&t1, NULL, print_hello, NULL))
+    str = "Hello";
+    if (pthread_create(&t1, NULL, print_word, str))
         exit(1);
-    if (pthread_create(&t2, NULL, print_world, NULL))
+    str = "World";
+    if (pthread_create(&t2, NULL, print_word, str))
         exit(1);
     if (pthread_join(t1, NULL))
         exit(1);
@@ -91,15 +95,13 @@ void    example_2()
 
 void    example_1()
 {
-    print_hello(NULL);
-    print_world(NULL);
+    print_word("Hello");
+    print_word("World");
 }
 
 int main()
 {
     example_1();
-
-
     return (0);
 }
 

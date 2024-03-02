@@ -17,6 +17,7 @@ void *routine(void *arg){
         printf("Didn't get lock\n");
     }
     return 0;
+    
 }
  
 int main(int arg, char *argv[]){

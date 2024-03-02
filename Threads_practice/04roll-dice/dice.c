@@ -7,6 +7,7 @@ void *roll_dice() {
     int value = (rand() % 6) + 1;
     int *result = malloc(sizeof(int));
     *result = value;
+    printf("Thread result: %p\n", result);
     return (void *) result;
 }
 
@@ -20,6 +21,8 @@ int main(int argc, char *argv[]){
     if(pthread_join(th, (void **) &res) != 0){
         return 2;
     }
+
+    printf("Thread result: %p\n", res);
     printf("result: %d\n", *res);
     free(res);
     return 0;

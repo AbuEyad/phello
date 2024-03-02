@@ -6,17 +6,18 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/25 15:27:25 by habu-zua          #+#    #+#             */
-/*   Updated: 2024/02/25 16:42:47 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:57:15 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	handle_1_philo(t_philo *philo)
+int	one_philo(t_philo *philo)
 {
 	take_left_fork(philo);
-	ft_usleep(get_die_time(philo->data));
-	set_philo_state(philo, DEAD);
+	ft_usleep(philo->data->die_time);
+	update_philo_state(philo, DEAD);
+	drop_left_fork(philo);
 	return (1);
 }
 
@@ -38,7 +39,7 @@ void	free_data(t_data *data)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
 		pthread_mutex_destroy(&data->philos[i].mut_state);
-		pthread_mutex_destroy(&data->philos[i].mut_nb_meals_had);
+		pthread_mutex_destroy(&data->philos[i].mut_meals_count);
 		pthread_mutex_destroy(&data->philos[i].mut_last_eat_time);
 	}
 	pthread_mutex_destroy(&data->mut_die_t);
@@ -59,14 +60,16 @@ void	print_msg(t_data *data, int id, char *msg)
 
 	time = get_time() - get_start_time(data);
 	pthread_mutex_lock(&data->mut_print);
-	if (get_keep_iter(data))
+	if (keep_iter(data))
 		printf("%llu %d %s\n", time, id, msg);
 	pthread_mutex_unlock(&data->mut_print);
 }
 
-void	print_mut(t_data *data, char *msg)
+void	ft_usleep(uint64_t sleep_time)
 {
-	pthread_mutex_lock(&data->mut_print);
-	printf("%s\n", msg);
-	pthread_mutex_unlock(&data->mut_print);
+	u_int64_t	start;
+
+	start = get_time();
+	while ((get_time() - start) < sleep_time)
+		usleep(500);
 }

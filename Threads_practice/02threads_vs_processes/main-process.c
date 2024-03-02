@@ -11,14 +11,13 @@ int main(int argc, char *argv[]){
     if(pid == -1){
         return 1;
     }
-
     if(pid == 0){
         x++;
     }
 
     
-    sleep(2);
-    printf("x = %d\n", x);
+    sleep(1);
+    printf("Value of x = %d\n", x);
     
     printf("PID = %d\n", getpid());
     if (pid != 0) {

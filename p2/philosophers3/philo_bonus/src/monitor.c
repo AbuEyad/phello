@@ -6,7 +6,7 @@
 /*   By: habu-zua <habu-zua@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/21 09:16:41 by habu-zua          #+#    #+#             */
-/*   Updated: 2023/11/10 14:32:49 by habu-zua         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:45:30 by habu-zua         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ void	*monitor_death(void *data_p)
 	while (should_stop(get_philo_state(data)) == false)
 	{
 		if (someone_died())
-			return (set_philo_state(data, FINISH), NULL);
+			return (update_philo_state(data, FINISH), NULL);
 		if (philo_died(data))
 		{
 			sem_wait(data->sem_print);
 			if (philo_died(data) && someone_died() == false)
 			{
-				set_philo_state(data, DEAD);
+				update_philo_state(data, DEAD);
 				let_others_know();
 				printf("%llu %d %s\n", get_time() - get_start_time(data),
 					data->philo.id, DIED);
